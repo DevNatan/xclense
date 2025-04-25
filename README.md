@@ -49,6 +49,27 @@ platform = "ios-arm64"
 output = "json"
 ```
 
+## 🧠 How it works
+
+1. **Swift Static Analysis**
+    - Uses `tree-sitter` to parse Swift source files.
+    - Extracts all references to types, functions, properties, and constants used from the imported XCFramework.
+
+2. **XCFramework Inspection**
+    - Parses `.framework` headers (umbrella and modular).
+    - Collects all publicly available symbols: classes, top-level functions, extensions, etc.
+
+3. **Kotlin Metadata Extraction (Planned)**
+    - Optionally reads metadata from `.klib` or `.def` files to track declaration origins.
+
+4. **Diffing Engine**
+    - Computes the delta between available symbols and used ones.
+    - Outputs a detailed report of unused exports.
+
+5. **Reporting**
+    - CLI output: concise and colorized.
+    - JSON and HTML outputs for CI and dashboard integration.
+
 ## 📦 Planned Integrations
 
 * GitHub Actions plugin
