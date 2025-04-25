@@ -25,6 +25,30 @@ Kotlin Multiplatform allows for seamless code sharing across Android and iOS by 
 - 🔧 Configurable inclusion/exclusion filters per module or symbol
 - 📂 Support for multiple Swift targets and frameworks in a single run
 
+## 🛠️ Basic Usage
+
+```shell
+xclense analyze \
+  --swift-path ./MyiOSApp/Sources \
+  --xc-path ./Shared/build/XCFrameworks/Release/Shared.xcframework \
+  --platform ios-arm64
+```
+
+Or use a configuration file and just `xclense analyze`
+
+```shell
+[swift]
+path = "./MyApp/Sources"
+exclude = ["Tests/", "Legacy/"]
+
+[xcframework]
+path = "./build/XCFrameworks/Release/MySDK.xcframework"
+platform = "ios-arm64"
+
+[report]
+output = "json"
+```
+
 ## 📦 Planned Integrations
 
 * GitHub Actions plugin
